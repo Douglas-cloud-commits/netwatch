@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7f5">
+  <title>NetWatch | Network Monitor</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="NetWatch home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>NETWATCH</span>
+      </a>
+      <div class="topbar-status"><span class="live-dot"></span><span>LOCAL MONITOR</span><span class="status-divider"></span><span id="connection-state">Connecting</span></div>
+    </header>
+
+    <main>
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">SYSTEM OVERVIEW <span id="current-date"></span></p>
+          <h1>Network <span>watch</span></h1>
+          <p class="host-line">Monitoring <strong id="hostname">your device</strong></p>
+        </div>
+        <div class="update-block"><span class="update-label">LAST UPDATED</span><time id="last-updated">--:--:--</time></div>
+      </section>
+
+      <section class="traffic-section" aria-labelledby="traffic-heading">
+        <div class="section-heading">
+          <div><p class="eyebrow">LIVE TRAFFIC</p><h2 id="traffic-heading">Network activity</h2></div>
+          <div class="chart-legend"><span><i class="legend-swatch received"></i>Received</span><span><i class="legend-swatch sent"></i>Sent</span></div>
+        </div>
+        <div class="chart-wrap"><canvas id="traffic-chart" aria-label="Live network traffic history chart"></canvas><div class="chart-empty" id="chart-empty">Collecting traffic samples<span>Graph updates every 2 seconds</span></div></div>
+        <div class="chart-axis"><span>60 seconds ago</span><span>30 seconds</span><span>Now</span></div>
+      </section>
+
+      <section class="metrics-section" aria-label="Network totals">
+        <article class="metric metric-received"><div class="metric-top"><span class="metric-label">TOTAL RECEIVED</span><span class="metric-symbol" aria-hidden="true">↓</span></div><p class="metric-value" id="bytes-received">--</p><p class="metric-sub" id="received-rate">Waiting for data</p></article>
+        <article class="metric metric-sent"><div class="metric-top"><span class="metric-label">TOTAL SENT</span><span class="metric-symbol" aria-hidden="true">↑</span></div><p class="metric-value" id="bytes-sent">--</p><p class="metric-sub" id="sent-rate">Waiting for data</p></article>
+        <article class="metric metric-packets"><div class="metric-top"><span class="metric-label">PACKETS RECEIVED</span><span class="metric-symbol" aria-hidden="true">↘</span></div><p class="metric-value" id="packets-received">--</p><p class="metric-sub">Since system startup</p></article>
+        <article class="metric metric-packets"><div class="metric-top"><span class="metric-label">PACKETS SENT</span><span class="metric-symbol" aria-hidden="true">↗</span></div><p class="metric-value" id="packets-sent">--</p><p class="metric-sub">Since system startup</p></article>
+      </section>
+
+      <section class="system-section" aria-labelledby="system-heading">
+        <div class="section-heading"><div><p class="eyebrow">DEVICE HEALTH</p><h2 id="system-heading">System status</h2></div></div>
+        <div class="system-grid">
+          <article class="system-metric"><div class="system-label-row"><span>Processor</span><strong id="cpu-value">--%</strong></div><div class="meter"><span id="cpu-meter"></span></div><p>CPU utilization</p></article>
+          <article class="system-metric memory"><div class="system-label-row"><span>Memory</span><strong id="memory-value">--%</strong></div><div class="meter"><span id="memory-meter"></span></div><p>RAM in use</p></article>
+          <div class="device-note"><span class="device-icon" aria-hidden="true">⌘</span><div><span class="device-note-label">THIS DEVICE</span><strong id="device-name">--</strong></div></div>
+        </div>
+      </section>
+    </main>
+    <footer><span>NETWATCH</span><span>Local device telemetry <i class="live-dot"></i></span></footer>
+  </div>
+</body>
+</html>

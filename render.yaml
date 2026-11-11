@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: netwatch
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NETWATCH_REQUIRE_AUTH
+        value: "1"
+      - key: NETWATCH_USERNAME
+        sync: false
+      - key: NETWATCH_PASSWORD
+        sync: false
